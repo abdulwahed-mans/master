@@ -5,6 +5,13 @@ from django.views import View
 from django.contrib.auth.views import LoginView
 from .forms import RegisterForm, LoginForm
 
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
+
+from django.contrib.auth.decorators import login_required
+
+
 
 def home(request):
     return render(request, 'users/home.html')
@@ -59,3 +66,22 @@ class CustomLoginView(LoginView):
 
         # else browser session will be as long as the session cookie time "SESSION_COOKIE_AGE" defined in settings.py
         return super(CustomLoginView, self).form_valid(form)
+    
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'users/password_reset.html'
+    email_template_name = 'users/password_reset_email.html'
+    subject_template_name = 'users/password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('users-home')
+
+
+
+
+@login_required
+def profile(request):
+    return render(request, 'users/profile.html')
