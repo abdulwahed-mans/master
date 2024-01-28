@@ -45,7 +45,7 @@ DATABASE_PASSWORD=my_password
 DATABASE_HOST=localhost
 ```
 
-#### sitting.py
+#### Update sitting.py
 
 ```py
 import os
