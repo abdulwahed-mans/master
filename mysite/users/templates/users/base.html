@@ -1,55 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{% block title %} {% endblock %}</title>
-  </head>
-  <body>
-    <div class="container p-3 my-3">
-      <div class="row">
-        <div class="col-md-12">
-          <nav
-            class="navbar navbar-expand-md navbar-light"
-            style="background-color: #f0f5f5"
-          >
-            <a href="/" class="navbar-brand">Home</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarCollapse"
-              aria-controls="navbarCollapse"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <div class="navbar-nav ms-auto">
-                <a href="#" class="nav-item nav-link">Profile</a>
-                <a href="#" class="nav-item nav-link">Logout</a>
-                <a href="#" class="nav-item nav-link">Sign in</a>
-              </div>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <title>{% block title %} {% endblock %} </title>
+</head>
+
+<body>
+  <div class="container p-3 my-3">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="navbar navbar-expand-md navbar-light" style="background-color: #f0f5f5">
+          <a href="/" class="navbar-brand">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+              {% if user.is_authenticated %}
+              <a href="#" class="nav-item nav-link">Profile</a>
+              <a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a>
+              {% else %}
+              <a href="{% url 'login' %}" class="nav-item nav-link">Sign in</a>
+              {% endif %}
             </div>
-          </nav>
-          {% block content %}{% endblock %}
+
+          </div>
+        </nav>
+        <!-- Any flash messages pop up in any page because this is the base template -->
+        {% if messages %}
+        <div class="alert alert-dismissible">
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          {% endfor %}
         </div>
+        {% endif %}
+        {% block content %}{% endblock %}
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <!-- A plugin for password show/hide -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.2.1/bootstrap-show-password.min.js"></script>
+
+</body>
+
 </html>
