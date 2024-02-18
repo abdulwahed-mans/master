@@ -1,0 +1,72 @@
+[
+  {
+    "model": "employees.employee",
+    "pk": 1,
+    "fields": {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "john.doe@example.com",
+      "salary": "5000.00",
+      "department": "IT",
+      "date_of_employment": "2022-01-15",
+      "city_of_residence": "London",
+      "overtime_hours": 5
+    }
+  },
+  {
+    "model": "employees.employee",
+    "pk": 2,
+    "fields": {
+      "first_name": "Fona",
+      "last_name": "Harbi",
+      "email": "fona.harbi@example.com",
+      "salary": "5200.00",
+      "department": "HR",
+      "date_of_employment": "2021-02-20",
+      "city_of_residence": "Paris",
+      "overtime_hours": 3
+    }
+  },
+  {
+    "model": "employees.employee",
+    "pk": 3,
+    "fields": {
+      "first_name": "Michael",
+      "last_name": "Smith",
+      "email": "michael.smith@example.com",
+      "salary": "5300.00",
+      "department": "Marketing",
+      "date_of_employment": "2020-03-15",
+      "city_of_residence": "Cairo",
+      "overtime_hours": 2
+    }
+  },
+  {
+    "model": "employees.employee",
+    "pk": 4,
+    "fields": {
+      "first_name": "Linda",
+      "last_name": "Johnson",
+      "email": "linda.johnson@example.com",
+      "salary": "5500.00",
+      "department": "Operations",
+      "date_of_employment": "2019-04-20",
+      "city_of_residence": "Paris",
+      "overtime_hours": 6
+    }
+  },
+  {
+    "model": "employees.employee",
+    "pk": 5,
+    "fields": {
+      "first_name": "James",
+      "last_name": "Brown",
+      "email": "james.brown@example.com",
+      "salary": "5400.00",
+      "department": "Development",
+      "date_of_employment": "2018-05-25",
+      "city_of_residence": "Roma",
+      "overtime_hours": 4
+    }
+  }
+]

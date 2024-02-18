@@ -10,6 +10,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("users.urls")),
+    path('employees/', include('employees.urls')),
     path(
         "login/",
         CustomLoginView.as_view(
